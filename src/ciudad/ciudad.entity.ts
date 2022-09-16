@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { SupermercadoEntity } from '../supermercado/supermercado.entity';
 
 export enum Pais {
     ARGENTINA = "Argentina",
@@ -22,5 +23,8 @@ export class CiudadEntity {
 
  @Column()
  habitantes: string;
+
+ @OneToMany(() => SupermercadoEntity, supermercado => supermercado.ciudad)
+ supermercados: SupermercadoEntity[];
 
 }

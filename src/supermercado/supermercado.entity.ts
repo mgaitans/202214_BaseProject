@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { CiudadEntity } from '../ciudad/ciudad.entity';
 
 @Entity()
 export class SupermercadoEntity {
@@ -16,4 +17,8 @@ export class SupermercadoEntity {
  
  @Column()
  paginaweb: string;
+
+ @ManyToOne(() => CiudadEntity, ciudad => ciudad.supermercados)
+ ciudad: CiudadEntity;
+
 }
