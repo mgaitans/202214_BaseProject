@@ -39,7 +39,7 @@ describe('CiudadService', () => {
     expect(service).toBeDefined();
   });
 
-  it('findAll debe retornar todos las ciudades', async () => {
+  it('findAll debe retornar todas las ciudades', async () => {
     const ciudades: CiudadEntity[] = await service.findAll();
     expect(ciudades).not.toBeNull();
     expect(ciudades).toHaveLength(ciudadesList.length);
@@ -54,7 +54,7 @@ describe('CiudadService', () => {
     expect(ciudad.habitantes).toEqual(storedCiudad.habitantes)
   });
 
-  it('findOne debería lanzar una excepción para un museo inválido', async () => {
+  it('findOne debería lanzar una excepción para una ciudad inválido', async () => {
     await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La ciudad con el id no fue encontrado")
   });
 

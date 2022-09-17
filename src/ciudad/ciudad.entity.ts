@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 import { SupermercadoEntity } from '../supermercado/supermercado.entity';
 
 export enum Pais {
@@ -24,7 +24,8 @@ export class CiudadEntity {
  @Column()
  habitantes: string;
 
- @OneToMany(() => SupermercadoEntity, supermercado => supermercado.ciudad)
+ @ManyToMany(() => SupermercadoEntity, supermercado => supermercado.ciudad)
+ @JoinTable()
  supermercados: SupermercadoEntity[];
 
 }
