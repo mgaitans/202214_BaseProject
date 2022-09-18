@@ -29,7 +29,7 @@ describe('CiudadService', () => {
       const ciudad: CiudadEntity = await repository.save({
         nombre: faker.lorem.word(),
         pais: Pais.ARGENTINA,
-        habitantes: faker.lorem.paragraphs()
+        habitantes: faker.random.numeric()
       })
       ciudadesList.push(ciudad);
     }

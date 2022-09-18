@@ -68,7 +68,7 @@ describe('SupermercadoService', () => {
       longitud: faker.lorem.word(),
       latitud: faker.lorem.paragraphs(),
       paginaweb: faker.lorem.paragraphs(),
-      ciudad: new CiudadEntity
+      ciudad: []
     }
 
     const nuevoSupermercado: SupermercadoEntity = await service.create(supermercado);

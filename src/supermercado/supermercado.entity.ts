@@ -3,22 +3,23 @@ import { CiudadEntity } from '../ciudad/ciudad.entity';
 
 @Entity()
 export class SupermercadoEntity {
- @PrimaryGeneratedColumn('uuid')
- id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
- @Column()
- nombre: string;
- 
- @Column()
- longitud: string;
- 
- @Column()
- latitud : string;
- 
- @Column()
- paginaweb: string;
+  @Column()
+  nombre: string;
+  
+  @Column()
+  longitud: string;
+  
+  @Column()
+  latitud : string;
+  
+  @Column()
+  paginaweb: string;
 
- @ManyToMany(() => CiudadEntity, ciudad => ciudad.supermercados)
- ciudad: CiudadEntity;
+  @ManyToMany(()=> CiudadEntity, ciudad => ciudad.supermercados)
+  @JoinTable()
+  ciudad: CiudadEntity[];
 
 }

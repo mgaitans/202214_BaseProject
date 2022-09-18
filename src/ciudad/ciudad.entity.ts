@@ -9,23 +9,27 @@ export enum Pais {
 
 @Entity()
 export class CiudadEntity {
- @PrimaryGeneratedColumn('uuid')
- id: string;
+  static save(arg0: { nombre: string; pais: Pais; habitantes: string; }): CiudadEntity | PromiseLike<CiudadEntity> {
+    throw new Error('Method not implemented.');
+  }
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
- @Column()
- nombre: string;
- 
- @Column({
-    type: 'simple-enum',
-    enum: Pais
-  })
-  pais: Pais
+  @Column()
+  nombre: string;
+  
+  @Column({
+      type: 'simple-enum',
+      enum: Pais
+    })
+    pais: Pais
 
- @Column()
- habitantes: string;
+  @Column()
+  habitantes: string;
+  
+  @ManyToMany(()=> SupermercadoEntity, supermercado => supermercado.ciudad)
+  @JoinTable()
+  supermercados: SupermercadoEntity[];
 
- @ManyToMany(() => SupermercadoEntity, supermercado => supermercado.ciudad)
- @JoinTable()
- supermercados: SupermercadoEntity[];
 
 }
