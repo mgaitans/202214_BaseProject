@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Url } from 'url';
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 
 @Entity()
@@ -10,10 +11,10 @@ export class SupermercadoEntity {
   nombre: string;
   
   @Column()
-  longitud: string;
+  longitud: number;
   
   @Column()
-  latitud : string;
+  latitud : number;
   
   @Column()
   paginaweb: string;

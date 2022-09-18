@@ -9,7 +9,7 @@ export enum Pais {
 
 @Entity()
 export class CiudadEntity {
-  static save(arg0: { nombre: string; pais: Pais; habitantes: string; }): CiudadEntity | PromiseLike<CiudadEntity> {
+  static save(arg0: { nombre: string; pais: Pais; habitantes: number; }): CiudadEntity | PromiseLike<CiudadEntity> {
     throw new Error('Method not implemented.');
   }
   @PrimaryGeneratedColumn('uuid')
@@ -25,7 +25,7 @@ export class CiudadEntity {
     pais: Pais
 
   @Column()
-  habitantes: string;
+  habitantes: number;
   
   @ManyToMany(()=> SupermercadoEntity, supermercado => supermercado.ciudad)
   @JoinTable()

@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString, IsNumber, IsEnum} from 'class-validator';
+import {IsNotEmpty, IsString, IsNumber, IsEnum, length} from 'class-validator';
 
 export enum Pais {
     ARGENTINA = "Argentina",
@@ -17,6 +17,6 @@ export class CiudadDto {
  
  @IsNumber()
  @IsNotEmpty()
- readonly habitantes: string;
+ readonly habitantes: number;
  
 }
