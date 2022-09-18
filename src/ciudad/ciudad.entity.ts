@@ -1,10 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 import { SupermercadoEntity } from '../supermercado/supermercado.entity';
 
+
 export enum Pais {
-    ARGENTINA = "Argentina",
-    ECUADOR   = "Ecuador",
-    PARAGUAY  = "Paraguay"
+  ARGENTINA = "Argentina",
+  ECUADOR = "Ecuador",
+  PARAGUAY = "Paraguay"
 }
 
 @Entity()

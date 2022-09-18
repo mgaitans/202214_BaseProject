@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString, IsNumber, IsEnum, length} from 'class-validator';
+import {IsNotEmpty, IsString, IsNumber, IsEnum} from 'class-validator';
 
 export enum Pais {
     ARGENTINA = "Argentina",

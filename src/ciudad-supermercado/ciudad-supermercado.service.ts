@@ -7,15 +7,14 @@ import { BusinessError, BusinessLogicException } from '../shared/errors/business
 
 @Injectable()
 export class CiudadSupermercadoService {
-    constructor(
-      @InjectRepository(SupermercadoEntity)
-      private readonly supermercadoRepository: Repository<SupermercadoEntity>,
-      
+  constructor(
       @InjectRepository(CiudadEntity)
-      private readonly ciudadRepository: Repository<CiudadEntity>
-    ) {}
+      private readonly ciudadRepository: Repository<CiudadEntity>, 
+      @InjectRepository(SupermercadoEntity)
+      private readonly supermercadoRepository: Repository<SupermercadoEntity>       
+    ){}
 
-    async addCiudadSupermercado(supermercadoId: string, ciudadId: string): Promise<SupermercadoEntity> {
+    async addSupermarketToCity(supermercadoId: string, ciudadId: string): Promise<SupermercadoEntity> {
       const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id: ciudadId}});
       if (!ciudad)
         throw new BusinessLogicException("La ciudad con el id no fue encontrado", BusinessError.NOT_FOUND);

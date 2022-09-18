@@ -27,9 +27,9 @@ describe('CiudadService', () => {
     ciudadesList = [];
     for(let i = 0; i < 5; i++){
       const ciudad: CiudadEntity = await repository.save({
-        nombre: faker.lorem.word(),
+        nombre: faker.address.country(),
         pais: Pais.ARGENTINA,
-        habitantes: faker.random.numeric()
+        habitantes: parseInt(faker.random.numeric()),
       })
       ciudadesList.push(ciudad);
     }
@@ -61,9 +61,9 @@ describe('CiudadService', () => {
   it('create debe retornar una nueva ciudad', async () => {
     const ciudad: CiudadEntity = {
       id: "",
-      nombre: faker.lorem.word(),
+      nombre: faker.address.country(),
       pais: Pais.ARGENTINA,
-      habitantes: faker.lorem.sentence(),
+      habitantes: parseInt(faker.random.numeric()),
       supermercados: []
     }
 
@@ -81,7 +81,7 @@ describe('CiudadService', () => {
     const ciudad: CiudadEntity = ciudadesList[0];
     ciudad.nombre = "Nuevo nombre";
     ciudad.pais = Pais.ARGENTINA;
-    ciudad.habitantes = "Nuevo numero de habitantes de una ciudad";
+    ciudad.habitantes = parseInt(faker.random.numeric());
     const updatedCiudad: CiudadEntity = await service.update(ciudad.id, ciudad);
     expect(updatedCiudad).not.toBeNull();
     const storedCiudad: CiudadEntity = await repository.findOne({ where: { id: ciudad.id } })
@@ -94,7 +94,7 @@ describe('CiudadService', () => {
   it('update debe retornar una excepcion pora una ciudad invalida', async () => {
     let ciudad: CiudadEntity = ciudadesList[0];
     ciudad = {
-      ...ciudad, nombre: "Nuevo nombre", habitantes: "Nuevo numero de habitantes de una ciudad"
+      ...ciudad, nombre: "Nuevo nombre", habitantes: parseInt(faker.random.numeric())
     }
     await expect(() => service.update("0", ciudad)).rejects.toHaveProperty("message", "La ciudad con el id no fue encontrado")
   });

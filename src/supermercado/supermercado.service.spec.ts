@@ -29,9 +29,9 @@ describe('SupermercadoService', () => {
     for(let i = 0; i < 5; i++){
       const supermercado: SupermercadoEntity = await repository.save({
         nombre: faker.lorem.word(),
-        longitud: faker.lorem.word(),
-        latitud: faker.lorem.paragraphs(),
-        paginaweb: faker.lorem.paragraphs()
+        longitud: parseInt(faker.random.numeric()),
+        latitud: parseInt(faker.random.numeric()),
+        paginaweb: faker.image.imageUrl(),
       })
       supermercadosList.push(supermercado);
     }
@@ -65,9 +65,9 @@ describe('SupermercadoService', () => {
     const supermercado: SupermercadoEntity = {
       id: "",
       nombre: faker.lorem.word(),
-      longitud: faker.lorem.word(),
-      latitud: faker.lorem.paragraphs(),
-      paginaweb: faker.lorem.paragraphs(),
+      longitud: parseInt(faker.random.numeric()),
+      latitud: parseInt(faker.random.numeric()),
+      paginaweb: faker.internet.url(),
       ciudad: []
     }
 
@@ -85,8 +85,8 @@ describe('SupermercadoService', () => {
   it('update debe modificar un supermercado', async () => {
     const supermercado: SupermercadoEntity = supermercadosList[0];
     supermercado.nombre = "Nuevo nombre";
-    supermercado.longitud = "Nueva longitud";
-    supermercado.latitud = "Nueva latitud";
+    supermercado.longitud = parseInt(faker.random.numeric());
+    supermercado.latitud = parseInt(faker.random.numeric());
     supermercado.paginaweb = "Nueva paginaweb";
     const updatedSupermercado: SupermercadoEntity = await service.update(supermercado.id, supermercado);
     expect(updatedSupermercado).not.toBeNull();
@@ -101,7 +101,7 @@ describe('SupermercadoService', () => {
   it('update debe retornar una excepcion pora un supermercado invalida', async () => {
     let supermercado: SupermercadoEntity = supermercadosList[0];
     supermercado = {
-      ...supermercado, nombre: "Nuevo nombre", longitud: "Nueva longitud de un supermercado"
+      ...supermercado, nombre: "Nuevo nombre", longitud: parseInt(faker.random.numeric())
     }
     await expect(() => service.update("0", supermercado)).rejects.toHaveProperty("message", "El supermercado con el id no fue encontrado")
   });

@@ -34,18 +34,18 @@ describe('CiudadSupermercadoService', () => {
     ciudadList = [];
     for(let i = 0; i < 5; i++){
       const ciudad: CiudadEntity = await CiudadEntity.save({
-        nombre: faker.lorem.word(),
+        nombre: faker.address.country(),
         pais: Pais.ARGENTINA,
-        habitantes: faker.random.numeric()
+        habitantes: parseInt(faker.random.numeric())
       })
       ciudadList.push(ciudad);
     }
 
     supermercado = await supermercadoRepository.save({
       nombre: faker.lorem.word(),
-      longitud: faker.lorem.word(),
-      latitud: faker.lorem.paragraphs(),
-      paginaweb: faker.lorem.paragraphs(),
+      longitud: parseInt(faker.random.numeric()),
+      latitud: parseInt(faker.random.numeric()),
+      paginaweb: faker.internet.url(),
       ciudad: ciudadList
     })
   }
@@ -54,3 +54,4 @@ describe('CiudadSupermercadoService', () => {
     expect(service).toBeDefined();
   });
 });
+

@@ -22,6 +22,7 @@ import { CiudadSupermercadoModule } from './ciudad-supermercado/ciudad-supermerc
       synchronize: true,
       keepConnectionAlive: true
     }),
+    CiudadModule, SupermercadoModule, CiudadSupermercadoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
