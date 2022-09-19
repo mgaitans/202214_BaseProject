@@ -7,6 +7,7 @@ import { BusinessError, BusinessLogicException } from '../shared/errors/business
 
 @Injectable()
 export class CiudadSupermercadoService {
+  
   constructor(
       @InjectRepository(CiudadEntity)
       private readonly ciudadRepository: Repository<CiudadEntity>, 
@@ -27,7 +28,7 @@ export class CiudadSupermercadoService {
       return await this.supermercadoRepository.save(supermercado);
     }
     
-    async findCiudadBySupermercadoIdCiudadId(supermercadoId: string, ciudadId: string): Promise<CiudadEntity> {
+    async findSupermarketFromCity(supermercadoId: string, ciudadId: string): Promise<CiudadEntity> {
       const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id: ciudadId}});
       if (!ciudad)
         throw new BusinessLogicException("La ciudad con el id no fue encontrado", BusinessError.NOT_FOUND)
@@ -44,7 +45,7 @@ export class CiudadSupermercadoService {
       return supermercadoCiudad;
     }
     
-    async findCiudadesBySupermercadoId(supermercadoId: string): Promise<CiudadEntity[]> {
+    async findSupermarketsFromCity(supermercadoId: string): Promise<CiudadEntity[]> {
       const supermercado: SupermercadoEntity = await this.supermercadoRepository.findOne({where: {id: supermercadoId}, relations: ["ciudad"]});
       if (!supermercado)
         throw new BusinessLogicException("El supermercado con el id no fue encontrado", BusinessError.NOT_FOUND)
@@ -52,7 +53,7 @@ export class CiudadSupermercadoService {
       return supermercado.ciudad;
     }
 
-    async associateCiudadSupermercado(supermercadoId: string, ciudad: CiudadEntity[]): Promise<SupermercadoEntity> {
+    async updateSupermarketsFromCity(supermercadoId: string, ciudad: CiudadEntity[]): Promise<SupermercadoEntity> {
       const supermercado: SupermercadoEntity = await this.supermercadoRepository.findOne({where: {id: supermercadoId}, relations: ["ciudad"]});
   
       if (!supermercado)
@@ -68,7 +69,7 @@ export class CiudadSupermercadoService {
       return await this.supermercadoRepository.save(supermercado);
     }
 
-    async deleteCiudadSupermercado(supermercadoId: string, ciudadId: string){
+    async deleteSupermarketFromCity(supermercadoId: string, ciudadId: string){
       const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id: ciudadId}});
       if (!ciudad)
         throw new BusinessLogicException("La ciudad con el id no fue encontrado", BusinessError.NOT_FOUND)

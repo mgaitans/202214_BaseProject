@@ -491,13 +491,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/supermarkets/edde3b31-b757-484a-ba56-383a0b07bd7d",
+							"raw": "{{baseUrl}}/supermarkets/151c1f3f-8033-406b-adb8-b9aa3df4ce58",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"supermarkets",
-								"edde3b31-b757-484a-ba56-383a0b07bd7d"
+								"151c1f3f-8033-406b-adb8-b9aa3df4ce58"
 							]
 						}
 					},
@@ -567,13 +567,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/supermarkets/edde3b31-b757-484a-ba56-383a0b07bd7d",
+							"raw": "{{baseUrl}}/supermarkets/151c1f3f-8033-406b-adb8-b9aa3df4ce58",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"supermarkets",
-								"edde3b31-b757-484a-ba56-383a0b07bd7d"
+								"151c1f3f-8033-406b-adb8-b9aa3df4ce58"
 							]
 						}
 					},
@@ -612,13 +612,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/supermarkets/edde3b31-b757-484a-ba56-383a0b07bd56",
+							"raw": "{{baseUrl}}/supermarkets/151c1f3f-8033-406b-adb8-b9aa3df4ce58",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"supermarkets",
-								"edde3b31-b757-484a-ba56-383a0b07bd56"
+								"151c1f3f-8033-406b-adb8-b9aa3df4ce58"
 							]
 						}
 					},
@@ -698,6 +698,19 @@
 			"item": [
 				{
 					"name": "Asociar un nuevo supermercado a una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -732,16 +745,30 @@
 				},
 				{
 					"name": "Obtener todos los supermercados que pertenecen a una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/cities-supermarkets",
+							"raw": "{{baseUrl}}/{{supermarket_id_1}}/cities",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"cities-supermarkets"
+								"{{supermarket_id_1}}",
+								"cities"
 							]
 						}
 					},
